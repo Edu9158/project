@@ -1,4 +1,4 @@
-from flask import Flask
+from Flask import Flask
 from routes.tracking import bp_tracking
 from routes.users import bp_users
 import os
