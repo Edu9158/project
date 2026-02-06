@@ -1,0 +1,62 @@
+                    SMART INVENTORY MANAGEMENT SYSTEM
+
+Instead of just telling the user what is in the warehouse, the system tells
+them what they need do worry about.
+
+The smart part of the software will be a Reorder Point(ROP) calculation.
+            ROP = (AverageDailyUsage x LeadTime) + SafetyStock
+
+- AverageDailyUsage: Calculated from sales/usage history.
+- Lead Time: How many days it takes for the supplier to deliver.
+- Safety Stock: A "buffer" to prevent running out during a busy week
+
+----------------------------------------------------------------------------
+
+Database Schema(MongoDB)
+Collections:
+    inventory = {
+        "_id": "ObjectId",
+        "sku": "000000",
+        "name": "ProductName",
+        "category": "ProductCategory",
+        "price": "ProductPrice"
+        "current_stock": "Amount",
+        "unit": "Pcs",
+        "lead_time_days": 5,
+        "min_safety_stock": 20
+    },
+    transaction = {
+        "_id": "ObjectId",
+        "sku": "000000",   
+        "type": "OUT", // or "IN"
+        "quantity": 10,
+        "timestamp": "2026-02-06T12:00:00Z",
+        "user_id": "user_01"
+    },
+    client = {
+
+    }
+
+----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
+
+smart_inventory/
+├── app.py              # The "Main" entry point
+├── requirements.txt    # Your library list
+├── .env                # Secret keys (DB URL, Token secrets)
+├── .gitignore          # Ignore venv/, .env, and __pycache__
+├── core/               # The "Brain" (Business Logic)
+│   ├── __init__.py
+│   ├── inventory.py    # Logic for ROP, stock calculations
+│   └── auth.py         # Logic for login and tokens
+├── routes/             # The "Voice" (API Endpoints)
+│   ├── __init__.py
+│   ├── tracking.py     # Flask Blueprints for stock moves
+│   └── users.py        # Blueprints for user management
+├── database/           # The "Memory" (Connection logic)
+│   ├── __init__.py
+│   └── mongo_client.py # Global MongoDB connection
+└── tests/              # The "Insurance" (Pytest)
+    ├── conftest.py
+    └── test_inventory.py
