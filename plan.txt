@@ -15,26 +15,31 @@ The smart part of the software will be a Reorder Point(ROP) calculation.
 Database Schema(MongoDB)
 Collections:
     inventory = {
-        "_id": "ObjectId",
-        "sku": "000000",
-        "name": "ProductName",
-        "category": "ProductCategory",
-        "price": "ProductPrice"
-        "current_stock": "Amount",
-        "unit": "Pcs",
-        "lead_time_days": 5,
-        "min_safety_stock": 20
+        '_id': 'ObjectId',
+        'sku': '000000',
+        'name': 'ProductName',
+        'category': 'ProductCategory',
+        'price': 'ProductPrice',
+        'current_stock': 'Amount',
+        'unit': 'Pcs',
+        'lead_time_days': 5,
+        'min_safety_stock': 20
     },
     transaction = {
-        "_id": "ObjectId",
-        "sku": "000000",   
-        "type": "OUT", // or "IN"
-        "quantity": 10,
-        "timestamp": "2026-02-06T12:00:00Z",
-        "user_id": "user_01"
+        '_id': 'ObjectId',
+        'sku': '000000',   
+        'type': 'OUT', // or 'IN'
+        'quantity': 10,
+        'timestamp': '2026-02-06T12:00:00Z',
+        'user_id': 'user_01'
     },
     client = {
-        
+        'id': 'ObjectId',
+        'cpf': 'Clientcpf',
+        'name': 'ClientName',
+        'phone': 'ClientPhone',
+        'email': 'ClientEmail',
+        'register_date': '2026-02-06T12:00:00Z'
     }
 
 ----------------------------------------------------------------------------
